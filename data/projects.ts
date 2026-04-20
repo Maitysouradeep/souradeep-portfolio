@@ -1,0 +1,38 @@
+export const projects = [
+  {
+    id: 1,
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce solution with real-time inventory management and payment integration.',
+    image: '/images/project1.jpg',
+    tech: ['Next.js', 'TypeScript', 'Stripe', 'MongoDB'],
+    github: 'https://github.com/yourusername/ecommerce',
+    live: 'https://ecommerce-demo.vercel.app',
+  },
+  {
+    id: 2,
+    title: 'Task Management App',
+    description: 'Collaborative task manager with real-time updates, team workspaces, and analytics dashboard.',
+    image: '/images/project2.jpg',
+    tech: ['React', 'Firebase', 'Tailwind CSS', 'Redux'],
+    github: 'https://github.com/yourusername/taskmgr',
+    live: 'https://taskmgr-demo.vercel.app',
+  },
+  {
+    id: 3,
+    title: 'AI Chat Interface',
+    description: 'Smart chatbot interface with natural language processing and context awareness.',
+    image: '/images/project3.jpg',
+    tech: ['Next.js', 'OpenAI API', 'Tailwind CSS', 'PostgreSQL'],
+    github: 'https://github.com/yourusername/aichat',
+    live: 'https://aichat-demo.vercel.app',
+  },
+  {
+    id: 4,
+    title: 'Analytics Dashboard',
+    description: 'Real-time data visualization dashboard with interactive charts and custom reporting.',
+    image: '/images/project4.jpg',
+    tech: ['React', 'Chart.js', 'Node.js', 'MongoDB'],
+    github: 'https://github.com/yourusername/analytics',
+    live: 'https://analytics-demo.vercel.app',
+  },
+];
