@@ -10,7 +10,6 @@ export default function ThemeRope() {
   const pullY = useMotionValue(0);
   const controls = useAnimation();
 
-  // Rope stretches slightly as the handle is pulled
   const ropeScale = useTransform(
     pullY,
     [0, 70],
@@ -45,7 +44,6 @@ export default function ThemeRope() {
     _event: MouseEvent | TouchEvent | PointerEvent,
     info: { offset: { y: number } }
   ) => {
-    // Only allow downward movement
     const distance = Math.max(0, Math.min(info.offset.y, 70));
 
     pullY.set(distance);
@@ -57,15 +55,12 @@ export default function ThemeRope() {
   ) => {
     const distance = Math.max(0, info.offset.y);
 
-    // Pull far enough = switch theme
     if (distance >= 45) {
       changeTheme();
 
-      // Tiny pause so the pull feels intentional
       await new Promise((resolve) => setTimeout(resolve, 80));
     }
 
-    // Smoothly return the handle
     await controls.start({
       y: 0,
       transition: {
@@ -80,10 +75,10 @@ export default function ThemeRope() {
   };
 
   return (
-    <div className="fixed right-[18px] top-0 z-[90] hidden sm:block">
+    <div className="fixed right-[8px] sm:right-[18px] top-0 z-[90] block">
       {/* Entire hanging rope */}
       <motion.div
-        className="relative h-[350px] w-10 origin-top"
+        className="relative h-[280px] w-8 sm:h-[350px] sm:w-10 origin-top"
         animate={{
           rotate: isPulling
             ? 0
@@ -103,7 +98,7 @@ export default function ThemeRope() {
       >
         {/* Main rope */}
         <motion.div
-          className="absolute left-1/2 top-0 h-[330px] w-[1px] -translate-x-1/2 origin-top bg-[var(--muted)]"
+          className="absolute left-1/2 top-0 h-[260px] sm:h-[330px] w-[1px] -translate-x-1/2 origin-top bg-[var(--muted)]"
           style={{
             scaleY: ropeScale,
           }}
@@ -111,7 +106,7 @@ export default function ThemeRope() {
 
         {/* Soft rope highlight */}
         <motion.div
-          className="absolute left-1/2 top-0 h-[330px] w-[2px] -translate-x-1/2 origin-top bg-[var(--foreground)]/[0.12]"
+          className="absolute left-1/2 top-0 h-[260px] sm:h-[330px] w-[2px] -translate-x-1/2 origin-top bg-[var(--foreground)]/[0.12]"
           style={{
             scaleY: ropeScale,
           }}
@@ -133,7 +128,7 @@ export default function ThemeRope() {
           onDragStart={handleDragStart}
           onDrag={handleDrag}
           onDragEnd={handleDragEnd}
-          className="absolute bottom-[2px] left-1/2 flex h-9 w-9 -translate-x-1/2 cursor-grab items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] shadow-[0_4px_20px_rgba(0,0,0,0.14)] active:cursor-grabbing"
+          className="absolute bottom-[2px] left-1/2 flex h-8 w-8 sm:h-9 sm:w-9 -translate-x-1/2 cursor-grab items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] shadow-[0_4px_20px_rgba(0,0,0,0.14)] active:cursor-grabbing"
         >
           {/* Inner light */}
           <motion.span
