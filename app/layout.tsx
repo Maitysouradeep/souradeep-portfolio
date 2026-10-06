@@ -6,6 +6,7 @@ import Providers from "./providers";
 import ScrollProgress from "@/components/ScrollProgress";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import VisitorCounter from "@/components/VisitorCounter";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
             {children}
           </main>
 
+          <VisitorCounter />
           <Footer />
         </Providers>
       </body>

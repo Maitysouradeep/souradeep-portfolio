@@ -10,6 +10,7 @@ const navItems = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
+  { label: "Resume ↗", href: "/resume.pdf", external: true },
 ];
 
 export default function Navbar() {
@@ -105,33 +106,34 @@ export default function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
                 data-cursor
                 className="
-                  group
-                  relative
-                  py-2
-                  text-[13px]
-                  text-[var(--muted)]
-                  transition-colors
-                  duration-300
-                  hover:text-[var(--foreground)]
-                "
+    group
+    relative
+    py-2
+    text-[13px]
+    text-[var(--muted)]
+    transition-colors
+    duration-300
+    hover:text-[var(--foreground)]
+  "
               >
                 {item.label}
 
-                {/* Hover line */}
                 <span
                   className="
-                    absolute
-                    bottom-0
-                    left-0
-                    h-px
-                    w-0
-                    bg-[var(--accent)]
-                    transition-all
-                    duration-300
-                    group-hover:w-full
-                  "
+      absolute
+      bottom-0
+      left-0
+      h-px
+      w-0
+      bg-[var(--accent)]
+      transition-all
+      duration-300
+      group-hover:w-full
+    "
                 />
               </a>
             ))}
@@ -142,11 +144,7 @@ export default function Navbar() {
             {/* Mobile menu */}
             <button
               type="button"
-              aria-label={
-                isOpen
-                  ? "Close navigation"
-                  : "Open navigation"
-              }
+              aria-label={isOpen ? "Close navigation" : "Open navigation"}
               aria-expanded={isOpen}
               onClick={() => setIsOpen((value) => !value)}
               className="
@@ -183,11 +181,7 @@ export default function Navbar() {
             transition-all
             duration-400
             md:hidden
-            ${
-              isOpen
-                ? "max-h-80 pb-5 opacity-100"
-                : "max-h-0 opacity-0"
-            }
+            ${isOpen ? "max-h-80 pb-5 opacity-100" : "max-h-0 opacity-0"}
           `}
         >
           <div
